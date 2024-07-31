@@ -19,7 +19,24 @@ function getCompMove() {
     }
 }
 
-console.log(getCompMove());
-console.log(getCompMove());
-console.log(getCompMove());
-console.log(getCompMove());
+function getHumanChoice() {
+    let numb = Number(window.prompt("0 -> Rock, 1 -> paper, 2-> scissors: "))
+
+    if (numb === 0)
+    {
+        return "rock"
+    }
+    else if (numb === 1)
+    {
+        return "paper"
+    }
+    else (numb === 2)
+    {
+        return "scissors"
+    }
+}
+
+console.log(getHumanChoice())
+console.log(getHumanChoice())
+console.log(getHumanChoice())
+console.log(getHumanChoice())
