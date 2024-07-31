@@ -88,5 +88,15 @@ function playRound(humanChoice, computerChoice)
     }
 }
 
+function playGame(){
+    for (let i = 0; i < 5; i++)
+    {
+        playRound(getHumanChoice(), getCompMove());
+    }
+    console.log(`Games Over human won: ${humanScore} comp won: ${computerScore}.`);
+}
+
 humanScore = 0;
 computerScore = 0;
+
+playGame();
