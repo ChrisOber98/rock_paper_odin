@@ -41,9 +41,13 @@ function getHumanChoice()
 
 function playRound(humanChoice, computerChoice)
 {
+    const result_div = document.querySelector(".result-output");
+    const score_div = document.querySelector(".score-output");
+
     if (humanChoice === computerChoice)
     {
-        console.log("TIE!");
+        result_div.textContent = "TIE";
+        score_div.textContent = humanScore;
         return;
     }
 
@@ -52,12 +56,14 @@ function playRound(humanChoice, computerChoice)
         if (computerChoice === "paper")
         {
             computerScore++;
-            console.log("paper beats rock u lose!");
+            result_div.textContent = "paper beats rock u lose!";
+            score_div.textContent = humanScore;
         }
         else
         {
             humanScore++;
-            console.log("rock beats scissors u win!");
+            result_div.textContent = "rock beats scissors u win!";
+            score_div.textContent = humanScore;
         }
     }
     else if (humanChoice === "paper")
@@ -65,12 +71,14 @@ function playRound(humanChoice, computerChoice)
         if (computerChoice === "rock")
         {
             humanScore++;
-            console.log("paper beats rock u win!");
+            result_div.textContent = "paper beats rock u win!";
+            score_div.textContent = humanScore;
         }
         else
         {
             computerScore++;
-            console.log("scissors beats rock u lose!");
+            result_div.textContent = "scissors beats rock u lose!";
+            score_div.textContent = humanScore;
         }
     }
     else
@@ -78,25 +86,27 @@ function playRound(humanChoice, computerChoice)
         if (computerChoice === "rock")
         {
             computerScore++;
-            console.log("rock beats scissors u lose!");
+            result_div.textContent = "rock beats scissors u lose!";
+            score_div.textContent = humanScore;
         }
         else
         {
             humanScore++;
-            console.log("scissors beats paper u win!");                   
+            result_div.textContent = "scissors beats paper u win!";
+            score_div.textContent = humanScore;                 
         }
     }
-}
-
-function playGame(){
-    for (let i = 0; i < 5; i++)
-    {
-        playRound(getHumanChoice(), getCompMove());
-    }
-    console.log(`Games Over human won: ${humanScore} comp won: ${computerScore}.`);
 }
 
 humanScore = 0;
 computerScore = 0;
 
-playGame();
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach((button) => 
+{
+    button.addEventListener("click", () => 
+    {
+        playRound(getHumanChoice(), getCompMove());
+    })
+});
